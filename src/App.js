@@ -15,7 +15,8 @@ import {
 } from "./components";
 
 function App() {
-  const x = useSelector((state) => state.search.names);
+  const ToggleSidebar = useSelector((state) => state.Menu.toggle);
+  console.log(ToggleSidebar);
 
   return (
     <div className="App">

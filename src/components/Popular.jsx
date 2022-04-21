@@ -1,5 +1,5 @@
 import React from "react";
-import HoverCover from "../components/share/index";
+import HoverCover from "../components/share/Hoverheader";
 import potser from "../Assets/images/poster1.webp";
 import Vid from "../Assets/Videos/Words Bubble Up Like .mp4";
 

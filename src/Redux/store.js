@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import searchTerm from "./Reducers/searchSlice";
+import ToggleSlice from "./Reducers/ToggleSlice";
 
 export default configureStore({
   reducer: {
-    search: searchTerm,
+    Menu: ToggleSlice,
   },
 });

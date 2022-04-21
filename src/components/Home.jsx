@@ -1,5 +1,5 @@
 import React from "react";
-import HoverCover from "../components/share/index";
+import HoverCover from "../components/share/Hoverheader";
 import potser from "../Assets/images/Tvshow.webp";
 import Vid from "../Assets/Videos/Bubble - Official Trailer - Netflix.mp4";
 const Home = () => {
