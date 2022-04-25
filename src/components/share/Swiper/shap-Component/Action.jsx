@@ -1,6 +1,4 @@
-const ShapTow = ({ item }) => {
-  const prefixs = "https://image.tmdb.org/t/p/w300";
-
+const Action = ({ item, prefixs }) => {
   return (
     <div>
       <img
@@ -12,4 +10,4 @@ const ShapTow = ({ item }) => {
   );
 };
 
-export default ShapTow;
+export default Action;

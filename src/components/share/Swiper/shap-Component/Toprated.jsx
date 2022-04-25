@@ -1,6 +1,4 @@
-const Toprated = ({ item }) => {
-  const prefixs = "https://image.tmdb.org/t/p/w300";
-
+const Toprated = ({ item, prefixs }) => {
   return (
     <div>
       <img

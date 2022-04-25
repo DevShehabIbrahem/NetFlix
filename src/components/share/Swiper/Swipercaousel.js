@@ -23,7 +23,7 @@ const Swipercaousel = ({ children, title, fetchurl }) => {
 
   //items map
   const slide = items?.map((item) => (
-    <SwiperSlide key={item.id} className="mb-8">
+    <SwiperSlide key={item.id} className="mb-8 py-5 mx-[8px] cursor-pointer">
       {React.cloneElement(children, { key: item.id, item })}
     </SwiperSlide>
   ));
@@ -32,7 +32,6 @@ const Swipercaousel = ({ children, title, fetchurl }) => {
     <>
       <h1 className="text-[20px] font-semibold mb-2 text-white">{title}</h1>
       <Swiper
-        spaceBetween={16}
         navigation
         breakpoints={{
           500: {

@@ -1,14 +1,22 @@
 import HoverVideoPlayer from "react-hover-video-player";
 import { BsFillPlayFill } from "react-icons/bs";
 import { AiOutlineRead } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  TendingMovies,
+  fetchTrendingmovies,
+} from "../../Redux/Reducers/moviesSlice";
 import ModalVideo from "react-modal-video";
 import "./ModalVideo/modal-video.scss";
 import { useCallback, useEffect, useState } from "react";
 const Hoverheader = (props) => {
-  console.log(props);
+  const dispatch = useDispatch();
   const prefixs = "https://image.tmdb.org/t/p/original";
-
+  const randomInfo = useSelector(TendingMovies);
+  console.log(randomInfo);
+  useEffect(() => {
+    dispatch(fetchTrendingmovies());
+  }, [dispatch]);
   const [isOpen, setOpen] = useState(false);
   // const d = "top-[40%] flex absolute md:top-[80%] text-red-500 space-x-4 left-2 md:left-20""
 
@@ -29,7 +37,7 @@ const Hoverheader = (props) => {
         videoSrc={props.videoSrc}
         pausedOverlay={
           <img
-            src={`${prefixs}${props.pausedOverlay.props.src}`}
+            src={`${prefixs}${randomInfo?.backdrop_path}`}
             alt="poster"
             style={{
               width: "100%",

@@ -8,21 +8,9 @@ import {
 } from "../Redux/Reducers/moviesSlice";
 
 const Popular = () => {
-  const data = useSelector(TendingMovies);
-  const poster = data.backdrop_path;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTrendingmovies());
-  }, [dispatch]);
-
   return (
     <div>
-      <HoverCover
-        videoSrc={Vid}
-        pausedOverlay={<img src={poster} alt="poster" />}
-        videoId="Yh0W2yiWlwo"
-      />
+      <HoverCover videoSrc={Vid} videoId="Yh0W2yiWlwo" />
     </div>
   );
 };
