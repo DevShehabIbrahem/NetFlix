@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ToggleSlice from "./Reducers/ToggleSlice";
+import moviesSlice from "./Reducers/moviesSlice";
 
 export default configureStore({
   reducer: {
-    Menu: ToggleSlice,
+    movie: moviesSlice,
   },
 });

@@ -1,7 +1,3 @@
-import React, { useState, useEffect } from "react";
-import Requests from "./Api";
-import axios from "axios";
-import { baseURL } from "./Api/baseURL";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import {
@@ -15,9 +11,6 @@ import {
 } from "./components";
 
 function App() {
-  const ToggleSidebar = useSelector((state) => state.Menu.toggle);
-  console.log(ToggleSidebar);
-
   return (
     <div className="App">
       <Navbar />
