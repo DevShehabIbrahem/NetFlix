@@ -1,19 +1,14 @@
-import React, { useEffect } from "react";
-import HoverCover from "../components/share/Hoverheader";
-import Vid from "../Assets/Videos/Tv.mp4";
-
-import { useSelector, useDispatch } from "react-redux";
-
-import {
-  fetchTrendingmovies,
-  TendingMovies,
-} from "../Redux/Reducers/moviesSlice";
+import Row from "./share/Row";
+import Requests from "../Api/reguests";
 
 const Tvshows = () => {
   return (
-    <div>
-      <HoverCover videoSrc={Vid} videoId="3pasTSnv59Q" />
-    </div>
+    <>
+      <Row title="Comedies" fetchUrl={Requests.fetchComedyMovies} />
+      <Row title="Horror Movies" fetchUrl={Requests.fetchHorrorMovies} />
+      <Row title="TopRated" fetchUrl={Requests.fetchTopRated} />
+      <Row title="Action" fetchUrl={Requests.fetchActionMovies} />
+    </>
   );
 };
 

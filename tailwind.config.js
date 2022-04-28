@@ -3,6 +3,11 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      extend: {
+        colors: {
+          rgba: "rgba(0, 0, 0, 0.54)",
+        },
+      },
       margin: {
         320: "320px",
       },

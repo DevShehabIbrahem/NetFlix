@@ -1,93 +1,105 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import logo from "../../Assets/images/netflix.png";
-import { IoIosNotifications } from "react-icons/io";
-import { AiOutlineSearch } from "react-icons/ai";
-import { GoArrowSmallDown } from "react-icons/go";
-import { isActiveStyle, isNotActiveStyle, Change } from "../../styles/style";
+import React, { useEffect, useState } from "react";
+import user from "../../Assets/images/userProfile.png";
+import netflix from "../../Assets/images/netflix.png";
+
+import { isActiveStyle, isNotActiveStyle } from "../../styles/style";
 import Browse from "../../components/NavBar/Browse";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false);
+  const [mobileNav, setMobileNav] = useState(false);
+  const [navChange, setNavChange] = useState(false);
+
+  const navChanged =
+    "bg-black fixed w-full top-0 transition-all ease-in flex justify-between items-center px-5 py-1 z-10 ";
+  const navNoChange =
+    "bg-transparent fixed w-full top-0 transition-all ease-in flex justify-between items-center px-5 py-1 z-10 ";
+  const scroll = () => {
+    if (window.scrollY >= 600) {
+      setNavChange(true);
+    } else {
+      setNavChange(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scroll);
+    return () => window.removeEventListener("scroll", scroll);
+  }, []);
 
   return (
-    <div className={Change}>
-      <div className="flex md:justify-between w-full">
-        <div className="hidden md:flex space-x-4 items-center">
-          <div>
-            <img src={logo} alt="logo" width={100} height={100} />
-          </div>
-          <div className="space-x-5">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? isActiveStyle : isNotActiveStyle
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/tvshows"
-              className={({ isActive }) =>
-                isActive ? isActiveStyle : isNotActiveStyle
-              }
-            >
-              TV Shows
-            </NavLink>
-            <NavLink
-              to="movies"
-              className={({ isActive }) =>
-                isActive ? isActiveStyle : isNotActiveStyle
-              }
-            >
-              Movies
-            </NavLink>
-            <NavLink
-              to="popular"
-              className={({ isActive }) =>
-                isActive ? isActiveStyle : isNotActiveStyle
-              }
-            >
-              New & Popular
-            </NavLink>
-            <NavLink
-              to="mylist"
-              className={({ isActive }) =>
-                isActive ? isActiveStyle : isNotActiveStyle
-              }
-            >
-              My List
-            </NavLink>
-          </div>
-        </div>
+    <div className={`${navChange ? navChanged : navNoChange}`}>
+      <div className="flex items-center justify-between">
+        <Link to="/">
+          <img
+            src={netflix}
+            alt="logo"
+            className="object-cover"
+            width={100}
+            height={100}
+          />
+        </Link>
 
-        <div className="hidden md:flex items-center space-x-5">
-          <div className="flex space-x-3 font-bold text-[30px]">
-            <div>
-              <AiOutlineSearch />
-            </div>
-            <div>
-              <IoIosNotifications />
-            </div>
-          </div>
-          <div>logo</div>
-        </div>
-        {/*Menu Mobile*/}
-        <div className=" flex space-x-14 relative overflow-hidden md:hidden">
-          <div>
-            <img src={logo} alt="logo" width={100} height={100} />
-          </div>
-
-          <div
-            className="flex items-center cursor-pointer "
-            onClick={() => setToggle(!toggle)}
+        <div className="hidden  md:flex items-center text-white space-x-4 font-semibold">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? isActiveStyle : isNotActiveStyle
+            }
           >
-            Browse
-            <GoArrowSmallDown fontSize={20} />
-          </div>
+            Home
+          </NavLink>
+
+          <NavLink
+            to="tvshows"
+            className={({ isActive }) =>
+              isActive ? isActiveStyle : isNotActiveStyle
+            }
+          >
+            Tv Shows
+          </NavLink>
+
+          <NavLink
+            to="movies"
+            className={({ isActive }) =>
+              isActive ? isActiveStyle : isNotActiveStyle
+            }
+          >
+            Movies
+          </NavLink>
+
+          <NavLink
+            to="popular"
+            className={({ isActive }) =>
+              isActive ? isActiveStyle : isNotActiveStyle
+            }
+          >
+            New & popular
+          </NavLink>
+
+          <NavLink
+            to="mylist"
+            className={({ isActive }) =>
+              isActive ? isActiveStyle : isNotActiveStyle
+            }
+          >
+            my List
+          </NavLink>
         </div>
+
+        {/*mobile Nav*/}
+        <button
+          onClick={() => setMobileNav(!mobileNav)}
+          className="text-white md:hidden ml-16"
+        >
+          Browse
+        </button>
+        {mobileNav && <Browse mobileNav={mobileNav} />}
       </div>
-      {toggle && <Browse setToggle={setToggle} />}
+
+      <div>
+        <img src={user} alt="user" className="w-12 h-12" />
+      </div>
     </div>
   );
 };

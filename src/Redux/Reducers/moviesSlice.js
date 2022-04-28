@@ -2,10 +2,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import baseURL from "../../Api/baseURL";
 import Requests from "../../Api/reguests";
-export const fetchTrendingmovies = createAsyncThunk(
+export const fetchNetflixOriginals = createAsyncThunk(
   "randomposter/fetchTrending",
   async () => {
-    const response = await baseURL.get(`${Requests.fetchTopRated}`);
+    const response = await baseURL.get(`${Requests.fetchNetflixOriginals}`);
     return response.data.results[
       Math.floor(Math.random() * response.data.results.length - 1)
     ];
@@ -13,19 +13,19 @@ export const fetchTrendingmovies = createAsyncThunk(
 );
 
 const initialState = {
-  randomposter: [],
+  NetflixOriginals: [],
 };
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchTrendingmovies.fulfilled]: (state, { payload }) => {
-      state.randomposter = payload;
+    [fetchNetflixOriginals.fulfilled]: (state, { payload }) => {
+      state.NetflixOriginals = payload;
     },
   },
 });
 
 export default moviesSlice.reducer;
 
-export const TendingMovies = (state) => state.movie.randomposter;
+export const NetflixOriginals = (state) => state.movie.NetflixOriginals;
