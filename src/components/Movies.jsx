@@ -1,5 +1,3 @@
-import HoverCover from "./share/Banner";
-import Vid from "../Assets/Videos/Scissor Seven.mp4";
 import Requests from "../Api/reguests";
 import Row from "./share/Row";
 

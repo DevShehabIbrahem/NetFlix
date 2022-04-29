@@ -11,6 +11,7 @@ import {
   Footer,
   Details,
 } from "./components";
+import GetStart from "./components/Getstart/GetStart";
 import Banner from "./components/share/Banner";
 
 function App() {
@@ -18,19 +19,19 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
-      {location.pathname !== "/detalis" && (
+      {location.pathname !== "/getstart" && (
         <>
+          <Navbar />
           <Banner />
         </>
       )}
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/getstart" element={<GetStart />} />
         <Route path="/tvshows" element={<Tvshows />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/popular" element={<Popular />} />
-
         <Route path="/mylist" element={<Mylist />} />
       </Routes>
       <Footer />

@@ -1,11 +1,3 @@
-import React, { useEffect } from "react";
-import HoverCover from "./share/Banner";
-import Vid from "../Assets/Videos/Words Bubble Up Like .mp4";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchTrendingmovies,
-  TendingMovies,
-} from "../Redux/Reducers/moviesSlice";
 import Row from "./share/Row";
 import Requests from "../Api/reguests";
 
