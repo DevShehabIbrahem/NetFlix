@@ -4,5 +4,4 @@ export { default as Mylist } from "./Mylist";
 export { default as Navbar } from "./NavBar/Navbar";
 export { default as Popular } from "./Popular";
 export { default as Tvshows } from "./Tvshows";
-export { default as Footer } from "./Footer";
-export { default as Details } from "./Details";
+export { default as Footer } from "./Footer/Footer";

@@ -27,14 +27,14 @@ const AccordionSection = ({ title, dec, dec2 }) => {
 
   return (
     <animated.div
-      className="w-[70%] py-[7px] px-[10px] font-semibold text-white overflow-hidden cursor-pointer  "
+      className="mx-7 w-full md:w-[70%] py-[7px] md:px-[10px] font-semibold text-white overflow-hidden cursor-pointer "
       style={openAnimation}
     >
       <div
-        className="flex justify-between items-center bg-[#1b1a1a] py-[0.8em] px-[2.2em] w-full mb-[1px] "
+        className="flex justify-between items-center bg-[#1b1a1a] py-[0.6em] px-[2.2em] w-full mb-1"
         onClick={toggleHandler}
       >
-        <h1 className="font-bold text-[1.4rem]">{title}</h1>
+        <h1 className="md:font-bold text-[1.4rem] leading-[.5em]">{title}</h1>
 
         <animated.div
           className="text-[35px]"
@@ -48,7 +48,8 @@ const AccordionSection = ({ title, dec, dec2 }) => {
       <p className="bg-[#303030] text-[22px] pt-[30px] pb-[20px] px-16 font-bold">
         {dec}
       </p>
-      <p className="bg-[#303030] text-[22px] pb-[30px] px-16 font-bold">
+
+      <p className="bg-[#303030] text-[20px] pb-[30px] px-16 font-bold">
         {dec2}
       </p>
     </animated.div>

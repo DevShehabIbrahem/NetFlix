@@ -9,7 +9,6 @@ import {
   Popular,
   Mylist,
   Footer,
-  Details,
 } from "./components";
 import GetStart from "./components/Getstart/GetStart";
 import Banner from "./components/share/Banner";

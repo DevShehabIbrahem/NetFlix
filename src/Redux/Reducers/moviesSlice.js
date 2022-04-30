@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import baseURL from "../../Api/baseURL";
 import Requests from "../../Api/reguests";
+
 export const fetchNetflixOriginals = createAsyncThunk(
   "randomposter/fetchTrending",
   async () => {

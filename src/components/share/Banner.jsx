@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -6,6 +5,7 @@ import {
   NetflixOriginals,
   fetchNetflixOriginals,
 } from "../../Redux/Reducers/moviesSlice";
+
 const Banner = () => {
   const randomInfo = useSelector(NetflixOriginals);
 
@@ -41,7 +41,7 @@ const Banner = () => {
           </button>
         </div>
 
-        <h1 className="w-[45rem] leading-[1.6] text-[0.8rem] pt-[1rem] max-w-[360px] h-[80px]">
+        <h1 className="w-[45rem] leading-[1.6] text-[1.1rem] font-bold pt-[1rem] max-w-[360px] h-[80px]">
           {cutWords(randomInfo?.overview, 150)}
         </h1>
       </div>
