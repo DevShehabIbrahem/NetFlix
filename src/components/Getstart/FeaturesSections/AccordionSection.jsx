@@ -27,7 +27,7 @@ const AccordionSection = ({ title, dec, dec2 }) => {
 
   return (
     <animated.div
-      className="mx-7 w-full md:w-[70%] py-[7px] md:px-[10px] font-semibold text-white overflow-hidden cursor-pointer "
+      className="mx-auto w-full md:w-[70%] py-[7px] md:px-[10px] font-semibold text-white overflow-hidden cursor-pointer "
       style={openAnimation}
     >
       <div
@@ -45,11 +45,11 @@ const AccordionSection = ({ title, dec, dec2 }) => {
         </animated.div>
       </div>
 
-      <p className="bg-[#303030] text-[22px] pt-[30px] pb-[20px] px-16 font-bold">
+      <p className="bg-[#303030] md:text-[22px] md:pt-[30px] md:pb-[20px] p-5 md:px-16 font-bold ">
         {dec}
       </p>
 
-      <p className="bg-[#303030] text-[20px] pb-[30px] px-16 font-bold">
+      <p className="bg-[#303030] md:text-[20px] md:pb-[30px] md:px-16 p-5 font-bold">
         {dec2}
       </p>
     </animated.div>

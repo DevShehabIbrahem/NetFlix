@@ -7,7 +7,7 @@ const Movies = () => {
       <Row title="Documentaries" fetchUrl={Requests.fetchDocumentaries} />
       <Row title="Romance" fetchUrl={Requests.fetchRomanceMovies} />
       <Row title="Comedies" fetchUrl={Requests.fetchComedyMovies} />
-      <Row title="Horror Movies" fetchUrl={Requests.fetchHorrorMovies} />{" "}
+      <Row title="Horror Movies" fetchUrl={Requests.fetchHorrorMovies} />
     </>
   );
 };

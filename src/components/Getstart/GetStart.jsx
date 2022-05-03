@@ -1,15 +1,27 @@
+import { useEffect } from "react";
+
 import home from "../../Assets/images/getStartImages/home-bg.jpg";
 import Upbar from "./Upbar";
 import AccordionSection from "./FeaturesSections/AccordionSection";
 import Features from "../Getstart/FeaturesSections/Features";
 
-import Alldev from "../../json/Alldev.json";
-import Tv from "../../json/Tv.json";
-import Mobile from "../../json/Mobile.json";
-import Kids from "../../json/Kids.json";
-import accordionData from "../../json/accordionData.json";
+import Alldev from "./json/Alldev.json";
+import Tv from "./json/Tv.json";
+import Mobile from "./json/Mobile.json";
+import Kids from "./json/Kids.json";
+import accordionData from "./json/accordionData.json";
+import { Link } from "react-router-dom";
+import { BannerShow, BannerState } from "../../Redux/Reducers/bannerShow";
+import { useDispatch, useSelector } from "react-redux";
 
 const GetStart = () => {
+  const banner = useSelector(BannerState);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(BannerShow(false));
+  }, [banner, dispatch]);
+
   return (
     <div className="bg-black">
       {/*Banner SEction*/}
@@ -44,9 +56,12 @@ const GetStart = () => {
                 />
               </div>
 
-              <div className="bg-[#e50914] md:text-[28px] px-[15px] md:px-[20px] md:py-[8px] leading-[50px] text-center md:w-[20rem] cursor-pointer">
+              <Link
+                to="!@"
+                className="bg-[#e50914] md:text-[28px] px-[15px] md:px-[20px] md:py-[8px] leading-[50px] text-center md:w-[20rem] cursor-pointer"
+              >
                 Get Started
-              </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -58,16 +73,16 @@ const GetStart = () => {
       <Features data={Alldev} />
       <Features isLeft data={Kids} />
 
-      <div className="flex flex-col justify-center items-center px-5 border-t-8 border-gray-700 py-[6rem]">
+      <div className="flex flex-col justify-center items-center md:px-5 border-t-8 border-gray-700 py-[6rem]">
         <h1 className="text-white font-bold text-[1.800rem] md:text-[50px] mb-10">
           Frequently Asked Questions
         </h1>
 
         {/*Accaccordion SEction*/}
         {accordionData.map(({ title, dec, dec2 }) => (
-          <>
+          <div key={title}>
             <AccordionSection title={title} dec={dec} dec2={dec2} />
-          </>
+          </div>
         ))}
 
         <div className="flex flex-col md:flex-row text-white  justify-center items-center md:space-y-0 space-y-5 mt-8 w-full md:w-[60%] ">

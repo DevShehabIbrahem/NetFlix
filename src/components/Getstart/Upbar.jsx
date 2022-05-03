@@ -1,8 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Assets/images/netflix.png";
 
-const Upbar = () => {
+const Upbar = ({ hidebtn }) => {
   const navigate = useNavigate();
   return (
     <div className="flex justify-between items-center px-5">
@@ -16,7 +15,7 @@ const Upbar = () => {
         />
       </div>
 
-      <div className="space-x-10">
+      <div className={`${hidebtn ? "hidden" : "flex space-x-10"}`}>
         <select
           name=""
           id=""
@@ -30,9 +29,12 @@ const Upbar = () => {
           </option>
         </select>
 
-        <button className="bg-[#e50914] px-[12px] py-[2px] md:px-[17px] md:py-[5px] font-semibold text-center text-[0.960rem] md:text-[1rem] text-white rounded">
+        <Link
+          to="/signin"
+          className="bg-[#e50914] px-[12px] py-[2px] md:px-[17px] md:py-[5px] font-semibold text-center text-[0.960rem] md:text-[1rem] text-white rounded"
+        >
           Sign In
-        </button>
+        </Link>
       </div>
     </div>
   );

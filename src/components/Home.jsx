@@ -1,7 +1,16 @@
 import Row from "./share/Row";
 import Requests from "../Api/reguests";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BannerShow, BannerState } from "../Redux/Reducers/bannerShow";
 
 const Home = () => {
+  const banner = useSelector(BannerState);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(BannerShow(true));
+  }, [banner, dispatch]);
   return (
     <>
       <Row

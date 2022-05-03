@@ -26,7 +26,7 @@ const Footer = () => {
         </ul>
 
         <div className="space-x-10 pt-5">
-          <select className="px-2 py-2 bg-transparent border border-[#757575] text-[#757575] outline-0 text-[16px]">
+          <select className="mb-[3rem] md:mb-[3rem]  px-2 py-2 bg-transparent border border-[#757575] text-[#757575] outline-0 text-[16px]">
             <option value="En" className="bg-gray-500 text-white">
               En
             </option>

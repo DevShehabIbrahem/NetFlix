@@ -7,6 +7,8 @@ import Browse from "../../components/NavBar/Browse";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   const [mobileNav, setMobileNav] = useState(false);
   const [navChange, setNavChange] = useState(false);
 
@@ -27,6 +29,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", scroll);
   }, []);
 
+  const HandleClick = () => {
+    setMobileNav(!mobileNav);
+    setOpen(!open);
+  };
   return (
     <div className={`${navChange ? navChanged : navNoChange}`}>
       <div className="flex items-center justify-between">
@@ -88,13 +94,10 @@ const Navbar = () => {
         </div>
 
         {/*mobile Nav*/}
-        <button
-          onClick={() => setMobileNav(!mobileNav)}
-          className="text-white md:hidden ml-16"
-        >
+        <button onClick={HandleClick} className="text-white md:hidden ml-16">
           Browse
         </button>
-        {mobileNav && <Browse mobileNav={mobileNav} />}
+        {mobileNav && <Browse mobileNav={mobileNav} open={open} />}
       </div>
 
       <div>

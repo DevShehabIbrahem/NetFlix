@@ -6,12 +6,10 @@ import {
   fetchNetflixOriginals,
 } from "../../Redux/Reducers/moviesSlice";
 
+import { cutWords } from "../../utility";
+
 const Banner = () => {
   const randomInfo = useSelector(NetflixOriginals);
-
-  const cutWords = (str, num) => {
-    return str?.length > num ? str.substr(0, num - 1) + "..." : str;
-  };
   const dispatch = useDispatch();
 
   useEffect(() => {
