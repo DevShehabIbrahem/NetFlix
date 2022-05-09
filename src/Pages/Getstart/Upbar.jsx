@@ -3,6 +3,7 @@ import logo from "../../Assets/images/netflix.png";
 
 const Upbar = ({ hidebtn }) => {
   const navigate = useNavigate();
+
   return (
     <div className="flex justify-between items-center px-5">
       <div onClick={() => navigate("/")} className="cursor-pointer">

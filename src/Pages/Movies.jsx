@@ -1,5 +1,5 @@
 import Requests from "../Api/reguests";
-import Row from "./share/Row";
+import Row from "../components/share/Row";
 
 const Movies = () => {
   return (

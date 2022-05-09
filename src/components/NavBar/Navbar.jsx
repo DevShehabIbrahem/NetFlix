@@ -2,20 +2,38 @@ import React, { useEffect, useState } from "react";
 import user from "../../Assets/images/userProfile.png";
 import netflix from "../../Assets/images/netflix.png";
 
-import { isActiveStyle, isNotActiveStyle } from "../../styles/style";
+import {
+  isActiveStyle,
+  isNotActiveStyle,
+  navChanged,
+  navNoChange,
+} from "../../styles/style";
 import Browse from "../../components/NavBar/Browse";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { IoIosNotifications, IoIosSearch } from "react-icons/io";
+import { useSpring, animated } from "react-spring";
+import { getAuth, signOut } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { Logout } from "../../Redux/Reducers/userSlice";
 
 const Navbar = () => {
+  const [isopen, setIsopen] = useState(false);
   const [open, setOpen] = useState(false);
 
   const [mobileNav, setMobileNav] = useState(false);
   const [navChange, setNavChange] = useState(false);
+  const navigate = useNavigate();
 
-  const navChanged =
-    "bg-black fixed w-full top-0 transition-all ease-in flex justify-between items-center px-5 py-1 z-10 ";
-  const navNoChange =
-    "bg-transparent fixed w-full top-0 transition-all ease-in flex justify-between items-center px-5 py-1 z-10 ";
+  const dispatch = useDispatch();
+
+  const UlList =
+    "hidden  md:flex items-center text-white space-x-4 font-semibold";
+
+  const openAnimation = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: isopen ? 1 : 0 },
+    config: { duration: "300" },
+  });
   const scroll = () => {
     if (window.scrollY >= 600) {
       setNavChange(true);
@@ -31,22 +49,27 @@ const Navbar = () => {
 
   const HandleClick = () => {
     setMobileNav(!mobileNav);
-    setOpen(!open);
+    setOpen(true);
+  };
+
+  const hanldeLogout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        dispatch(Logout(localStorage.removeItem("user")));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className={`${navChange ? navChanged : navNoChange}`}>
       <div className="flex items-center justify-between">
         <Link to="/">
-          <img
-            src={netflix}
-            alt="logo"
-            className="object-cover"
-            width={100}
-            height={100}
-          />
+          <img src={netflix} alt="logo" className="w-[100px] mr-4" />
         </Link>
 
-        <div className="hidden  md:flex items-center text-white space-x-4 font-semibold">
+        <div className={UlList}>
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -97,11 +120,26 @@ const Navbar = () => {
         <button onClick={HandleClick} className="text-white md:hidden ml-16">
           Browse
         </button>
-        {mobileNav && <Browse mobileNav={mobileNav} open={open} />}
+        {mobileNav && <Browse setOpen={setOpen} open={open} />}
       </div>
 
-      <div>
-        <img src={user} alt="user" className="w-12 h-12" />
+      <div className="flex items-center justify-center space-x-2 relative">
+        <IoIosSearch className="text-white text-[20] md:text-[30px]" />
+        <h1 className="font-semibold text-[15px] text-white">Kids</h1>
+        <IoIosNotifications className="text-white text-[20] md:text-[30px]" />
+        <img
+          src={user}
+          alt="user"
+          className="w-12 h-12"
+          onClick={() => setIsopen(!isopen)}
+        />
+        <animated.div
+          className=" text-red-500 cursor-pointer font-bold flex items-center justify-center h-[100px] absolute top-12 right-0 z-20 bg-gradient-to-t from-[#141414c2] to-black w-[180px] "
+          style={openAnimation}
+          onClick={hanldeLogout}
+        >
+          SignOut
+        </animated.div>
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import { isActiveStyle, isNotActiveStyle } from "../../styles/style";
 
-const Browse = ({ setToggle, open }) => {
+const Browse = ({ open, setOpen }) => {
   const openAnimation = useSpring({
     from: { opacity: 0 },
     to: { opacity: open ? 1 : 0 },
@@ -17,46 +18,46 @@ const Browse = ({ setToggle, open }) => {
       >
         <NavLink
           to="/"
-          onClick={() => setToggle(false)}
           className={({ isActive }) =>
             isActive ? isActiveStyle : isNotActiveStyle
           }
+          onClick={() => setOpen(!open)}
         >
           Home
         </NavLink>
         <NavLink
           to="/tvshows"
-          onClick={() => setToggle(false)}
           className={({ isActive }) =>
             isActive ? isActiveStyle : isNotActiveStyle
           }
+          onClick={() => setOpen(!open)}
         >
           TV Shows
         </NavLink>
         <NavLink
           to="/movies"
-          onClick={() => setToggle(false)}
           className={({ isActive }) =>
             isActive ? isActiveStyle : isNotActiveStyle
           }
+          onClick={() => setOpen(!open)}
         >
           Movies
         </NavLink>
         <NavLink
           to="/popular"
-          onClick={() => setToggle(false)}
           className={({ isActive }) =>
             isActive ? isActiveStyle : isNotActiveStyle
           }
+          onClick={() => setOpen(!open)}
         >
           New & Popular
         </NavLink>
         <NavLink
           to="/mylist"
-          onClick={() => setToggle(false)}
           className={({ isActive }) =>
             isActive ? isActiveStyle : isNotActiveStyle
           }
+          onClick={() => setOpen(!open)}
         >
           My List
         </NavLink>

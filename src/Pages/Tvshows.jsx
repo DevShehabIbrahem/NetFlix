@@ -1,4 +1,4 @@
-import Row from "./share/Row";
+import Row from "../components/share/Row";
 import Requests from "../Api/reguests";
 
 const Tvshows = () => {
