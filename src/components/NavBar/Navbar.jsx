@@ -105,15 +105,6 @@ const Navbar = () => {
           >
             New & popular
           </NavLink>
-
-          <NavLink
-            to="mylist"
-            className={({ isActive }) =>
-              isActive ? isActiveStyle : isNotActiveStyle
-            }
-          >
-            my List
-          </NavLink>
         </div>
 
         {/*mobile Nav*/}
